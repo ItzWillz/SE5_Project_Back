@@ -1,9 +1,10 @@
 module.exports = (sequelize, Sequelize) => {
   const Session = sequelize.define("session", {
-    id: {
+    sessionID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+      allowNull: false,
     },
     token: {
       type: Sequelize.STRING(3000),
@@ -17,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATE,
       allowNull: false,
     },
-  });
+  }); 
 
   return Session;
 };
