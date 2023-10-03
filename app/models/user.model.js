@@ -1,9 +1,10 @@
 module.exports = (sequelize, Sequelize) => {
   const User = sequelize.define("user", {
-    id: {
+    userID: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+      allowNull: false,
     },
     fName: {
       type: Sequelize.STRING,
@@ -17,6 +18,11 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
+    // permission: {              // Don't need permission because a user is either a student or an admin and
+    //   type: Sequelize.STRING,  // have unique userIDs
+    //   allowNull: false,
+    // },
+    
     // refresh_token: {
     //   type: Sequelize.STRING(512),
     //   allowNull: true
