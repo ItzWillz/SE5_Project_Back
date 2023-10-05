@@ -41,11 +41,6 @@ db.session.belongsTo(
 );
 
 // Foreign key for admin
-db.user.hasOne(
-  db.admin,
-  { as: "admin" },
-  { foreignKey: { allowNull: false}, onDelete: "CASCADE" }
-);
 db.admin.belongsTo(
   db.user,
   { as: "user" },
@@ -53,11 +48,6 @@ db.admin.belongsTo(
 );
 
 // Foreign key for student
-db.user.hasOne(
-  db.student,
-  { as: "student" },
-  { foreignKey: { allowNull: false}}
-);
 db.student.belongsTo(
   db.user,
   { as: "user" },
@@ -137,14 +127,9 @@ db.studentAccomodation.belongsTo(
 );
 
 // Foreign key for StudentAccomodation
-db.notification.hasOne(
+db.notification.belongsTo(
   db.studentAccomodation,
   { as: "studentAccomodation" },
-  { foreignKey: { allowNull: false}}
-);
-db.studentAccomodation.belongsTo(
-  db.notification,
-  { as: "notification" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE"}
 );
 
@@ -173,11 +158,6 @@ db.studentAccomodation.belongsTo(
 );
 
 // Foreign key for AccomodationApproval
-db.request.hasOne(
-  db.approval,
-  { as: "approval" },
-  { foreignKey: { allowNull: false}, onDelete: "CASCADE"}
-);
 db.approval.belongsTo(
   db.request,
   { as: "request" },
