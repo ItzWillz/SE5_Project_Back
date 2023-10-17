@@ -28,21 +28,13 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/auth.routes.js")(app);
-<<<<<<< HEAD
 require("./app/routes/accReq.routes")(app);
 require("./app/routes/student.routes")(app);
-=======
 require("./app/routes/accommodation.routes")(app);
->>>>>>> a664f37 (Implemented acc. controller and routes.)
 
 // set port, listen for requests
-<<<<<<< HEAD
 
-const PORT = process.env.PORT || 3100;
-
-=======
 const PORT = process.env.PORT || 3022;
->>>>>>> 0903ecc (Server.js Port Change)
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
