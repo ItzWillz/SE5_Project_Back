@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --",
     "start": "node server.js",
-    "bundle": "mkdir deploy && cp -r app server.js package.json package-lock.json accommodations-t2-backend.service .env deploy"
+    "bundle": "mkdir deploy && cp -r config controllers models routes server.js package.json package-lock.json accommodations-t2-backend.service deploy && rm deploy/config/db.config.js && mv deploy/config/prod.db.config.js deploy/config/db.config.js"
   },
   "keywords": [
     "node.js",
