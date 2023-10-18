@@ -2,29 +2,26 @@
   "name": "accommodations-backend",
   "version": "1.0.0",
   "description": "Accommodations Node.js with Rest API",
+  "private": true,
   "main": "server.js",
   "scripts": {
-    "test": "jest --",
     "start": "node server.js",
     "bundle": "mkdir deploy && cp -r app server.js package.json package-lock.json accommodations-t2-backend.service deploy && rm deploy/app/config/db.config.js && mv deploy/app/config/prod.db.config.js deploy/app/config/db.config.js"
   },
-  "keywords": [
-    "node.js",
-    "express",
-    "sequelize"
-  ],
-  "author": "cs",
-  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
-    "express": "^4.17.3",
+    "express": "^4.18.2",
     "googleapis": "^100.0.0",
     "jest": "^29.3.1",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^2.3.3",
+    "mariadb": "^2.4.2",
     "parser": "^0.1.4",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
     "sequelize": "^6.19.0",
+    "sequelize-cli": "^6.2.0",
     "supertest": "^6.3.3"
   }
 }
