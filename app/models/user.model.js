@@ -21,6 +21,7 @@ module.exports = (sequelize, Sequelize) => {
     permission: {              // Don't need permission because a user is either a student or an admin and
       type: Sequelize.STRING,  // have unique userIDs
       allowNull: true,
+      default: "student",
     },
     
     // refresh_token: {
