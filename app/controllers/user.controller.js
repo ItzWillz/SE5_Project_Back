@@ -102,7 +102,7 @@ exports.update = (req, res) => {
   const id = req.params.id;
 
   User.update(req.body, {
-    where: { id: id },
+    where: { userID: id },
   })
     .then((num) => {
       if (num == 1) {
@@ -117,7 +117,7 @@ exports.update = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating User with id=" + id,
+        message: "Error updating User with id=" + id + err,
       });
     });
 };
@@ -127,7 +127,7 @@ exports.delete = (req, res) => {
   const id = req.params.id;
 
   User.destroy({
-    where: { id: id },
+    where: { userID: id },
   })
     .then((num) => {
       if (num == 1) {
