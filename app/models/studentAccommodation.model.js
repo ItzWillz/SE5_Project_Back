@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-    const StudentAccomodation = sequelize.define("studentAccomodation", {
-        studentAccID: {
+    const StudentAccommodation = sequelize.define("studentAccommodation", {
+        id: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -12,10 +12,10 @@ module.exports = (sequelize, Sequelize) => {
         },
 
     }, 
-    // {
-    //     timestamps: false
-    // }
+    {
+        freezeTableName: true,
+    }
     );
   
-    return StudentAccomodation;
+    return StudentAccommodation;
   };

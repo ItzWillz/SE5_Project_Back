@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-    const Accomodation = sequelize.define("accomodation", {
-      accID: {
+    const Accommodation = sequelize.define("accommodation", {
+      id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -22,7 +22,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: true,
       },
-    });
+    },
+    {
+      freezeTableName: true,
+    }
+    );
   
-    return Accomodation;
+    return Accommodation;
   };

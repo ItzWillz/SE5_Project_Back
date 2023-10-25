@@ -6,8 +6,13 @@ const db_name = process.env.DB_NAME;
 module.exports = {
     HOST: 'localhost',
     USER: 'root',
+<<<<<<< HEAD
     PASSWORD: '123456778',
     DB: 'accomodation',
+=======
+    PASSWORD: 'password',
+    DB: 'se4p3',
+>>>>>>> dev
     dialect: 'mysql',   // 'mysql' for local database, 'mariadb' for AWS database
     dialectOptions: {
         

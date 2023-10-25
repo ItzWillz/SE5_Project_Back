@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const Request = sequelize.define("request", {
-      requestID: {
+      id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -22,7 +22,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.DATE,
         allowNull: false,
       },
-    });
+    },
+    {
+      freezeTableName: true,
+    }
+    );
   
     return Request;
   };

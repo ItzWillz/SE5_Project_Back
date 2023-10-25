@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const Admin = sequelize.define("admin", {
-        adminID: {
+        id: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,
@@ -11,9 +11,9 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false,
         },
     }, 
-    // {
-    //     timestamps: false
-    // }
+    {
+        freezeTableName: true,
+    }
     );
   
     return Admin;

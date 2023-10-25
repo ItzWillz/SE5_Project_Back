@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const Approval = sequelize.define("approval", {
-      approvalID: {
+      id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -18,7 +18,11 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-    });
+    },
+    {
+      freezeTableName: true,
+    }
+    );
   
     return Approval;
   };

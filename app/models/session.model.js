@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const Session = sequelize.define("session", {
-    sessionID: {
+    id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -18,7 +18,11 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATE,
       allowNull: false,
     },
-  }); 
+  },
+  {
+    freezeTableName: true,
+  }
+  ); 
 
   return Session;
 };
