@@ -22,6 +22,9 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING(1),
             allowNull: false
         },
+    },
+    {
+        freezeTableName: true,
     }
     );
   

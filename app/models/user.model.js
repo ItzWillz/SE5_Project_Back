@@ -23,16 +23,11 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: true,
       default: "student",
     },
-    
-    // refresh_token: {
-    //   type: Sequelize.STRING(512),
-    //   allowNull: true
-    // },
-    // expiration_date: {
-    //   type: Sequelize.DATE,
-    //   allowNull: true
-    // },
-  });
+  },
+  {
+    freezeTableName: true,
+  }
+);
 
   return User;
 };

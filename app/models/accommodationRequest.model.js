@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Approval = sequelize.define("approval", {
+    const Request = sequelize.define("request", {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -10,15 +10,23 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING(3000),
         allowNull: false,
       },
-      date: {
-        type: Sequelize.DATE,
+      status: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       semester: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-    });
+      date: {
+        type: Sequelize.DATE,
+        allowNull: false,
+      },
+    },
+    {
+      freezeTableName: true,
+    }
+    );
   
-    return Approval;
+    return Request;
   };
