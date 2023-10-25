@@ -18,10 +18,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      date: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
+      type: {
+        type: Sequelize.STRING(45),
+        allowNull: false
+      }
     },
     {
       freezeTableName: true,
