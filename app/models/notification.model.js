@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const Notification = sequelize.define("notification", {
-        notificationID: {
+        id: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,

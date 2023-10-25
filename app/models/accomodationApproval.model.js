@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const Approval = sequelize.define("approval", {
-      approvalID: {
+      id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
