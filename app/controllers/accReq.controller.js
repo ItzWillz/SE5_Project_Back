@@ -25,7 +25,6 @@ exports.create = (req, res) => {
   AccRequest.create(accRequest)
     .then((data) => {
       res.send(data);
-      sendEmail(req.body.email);
     })
     .catch((err) => {
       res.status(500).send({
@@ -137,47 +136,3 @@ exports.deleteAll = (req, res) => {
       });
     });
 };
-
-sendEmail = (email) => {
-  const mailOptions = {
-    from: 'mauriceirakoze77@gmail.com',
-    to: email,
-    subject: "Initial Accommodations Request Email",
-    text: 
-    `
-    Thank you for submitting your request for accommodations. We require supporting documentation to fulfill your request. 
-
-
-    Documentation must be from an appropriate, qualified professional who has seen you within the past 18 months and must contain the following information:
-    
-    
-    You are a person with a disability.
-    The diagnosis (what is the disability?)
-    Information about the necessary classroom accommodations you will need to successfully complete the semester. There must be a nexus between the disability and the accommodations requested.
-    Name and credentials (license #, etc.) of the diagnostic clinician.
-    
-    
-    Documentation may be emailed to me, but it must be on official letterhead. If your doctor’s office is unwilling to email me (this is the most likely scenario), they may mail the document to you. Then, scan and email it to me. 
-    
-    
-    Once the information is submitted, we will schedule a time to meet to discuss the details (in person or via video conference). After our meeting, I will email your professors your specific ADA academic accommodations letter. Accommodations MUST BE RENEWED EACH SEMESTER.
-    
-    
-    Please let me know if you have any other questions or concerns. I look forward to hearing from you.
-    
-    
-    Sincerely,
-    
-    `,
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error(error);
-      res.status(500).send('Email could not be sent.');
-    } else {
-      console.log('Email sent: ' + info.response);
-      res.status(200).send('Email sent successfully.');
-    }
-  });
-}
