@@ -32,9 +32,9 @@ module.exports = (sequelize, Sequelize) => {
         },
 
     }, 
-    // {
-    //     timestamps: false
-    // }
+    {
+        freezeTableName: true,
+    }
     );
   
     return Course;

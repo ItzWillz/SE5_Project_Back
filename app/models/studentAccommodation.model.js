@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const StudentAccomodation = sequelize.define("studentAccomodation", {
+    const StudentAccommodation = sequelize.define("studentAccommodation", {
         id: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -12,10 +12,10 @@ module.exports = (sequelize, Sequelize) => {
         },
 
     }, 
-    // {
-    //     timestamps: false
-    // }
+    {
+        freezeTableName: true,
+    }
     );
   
-    return StudentAccomodation;
+    return StudentAccommodation;
   };

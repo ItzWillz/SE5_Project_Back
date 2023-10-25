@@ -16,15 +16,15 @@ db.sequelize = sequelize;
 
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.session = require("./session.model.js")(sequelize, Sequelize);
-db.accomodation = require("./accomodation.model.js")(sequelize, Sequelize);
-db.approval = require("./accomodationApproval.model.js")(sequelize, Sequelize);
-db.request = require("./accomodationRequest.model.js")(sequelize, Sequelize);
+db.accommodation = require("./accommodation.model.js")(sequelize, Sequelize);
+db.approval = require("./accommodationApproval.model.js")(sequelize, Sequelize);
+db.request = require("./accommodationRequest.model.js")(sequelize, Sequelize);
 db.course = require("./course.model.js")(sequelize, Sequelize);
 db.courseSchedule = require("./courseSchedule.model.js")(sequelize, Sequelize);
 db.faculty = require("./faculty.model.js")(sequelize, Sequelize);
 db.notification = require("./notification.model.js")(sequelize, Sequelize);
 db.student = require("./student.model.js")(sequelize, Sequelize);
-db.studentAccomodation = require("./studentAccomodation.model.js")(sequelize, Sequelize);
+db.studentAccommodation = require("./studentAccommodation.model.js")(sequelize, Sequelize);
 db.studentSchedule = require("./studentCourseSchedule.model.js")(sequelize, Sequelize);
 db.admin = require("./admin.model.js")(sequelize, Sequelize);
 
@@ -116,24 +116,24 @@ db.notification.belongsTo(
 
 // Foreign key for StudentAccomodation
 db.student.hasMany(
-  db.studentAccomodation,
-  { as: "studentAccomodation" },
+  db.studentAccommodation,
+  { as: "studentAccommodation" },
   { foreignKey: { allowNull: false}, onDelete: "CASCADE"}
 );
-db.studentAccomodation.belongsTo(
+db.studentAccommodation.belongsTo(
   db.student,
   { as: "student" },
   { foreignKey: { allowNull: false }}
 );
 
-// Foreign key for StudentAccomodation
+// Foreign key for StudentAccommodation
 db.notification.belongsTo(
-  db.studentAccomodation,
-  { as: "studentAccomodation" },
+  db.studentAccommodation,
+  { as: "studentAccommodation" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE"}
 );
 
-// Foreign key for AccomodationRequest
+// Foreign key for AccommodationRequest
 db.student.hasMany(
   db.request,
   { as: "request" },
@@ -145,19 +145,19 @@ db.request.belongsTo(
   { foreignKey: { allowNull: false }}
 );
 
-// Foreign key for StudentAccomodation
-db.accomodation.hasMany(
-  db.studentAccomodation,
-  { as: "studentAccomodation" },
+// Foreign key for StudentAccommodation
+db.accommodation.hasMany(
+  db.studentAccommodation,
+  { as: "studentAccommodation" },
   { foreignKey: { allowNull: false}, onDelete: "CASCADE"}
 );
-db.studentAccomodation.belongsTo(
-  db.accomodation,
-  { as: "accomodation" },
+db.studentAccommodation.belongsTo(
+  db.accommodation,
+  { as: "accommodation" },
   { foreignKey: { allowNull: false }}
 );
 
-// Foreign key for AccomodationApproval
+// Foreign key for AccommodationApproval
 db.approval.belongsTo(
   db.request,
   { as: "request" },

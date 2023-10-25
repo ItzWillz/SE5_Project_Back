@@ -1,28 +1,32 @@
 module.exports = (sequelize, Sequelize) => {
-    const Request = sequelize.define("request", {
+    const Accommodation = sequelize.define("accommodation", {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
       },
-      body: {
-        type: Sequelize.STRING(3000),
+      title: {
+        type: Sequelize.STRING(150),
         allowNull: false,
       },
-      status: {
+      description: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      semester: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      date: {
+      type: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-    });
+      addDoc: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+    },
+    {
+      freezeTableName: true,
+    }
+    );
   
-    return Request;
+    return Accommodation;
   };
