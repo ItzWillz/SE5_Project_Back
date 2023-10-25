@@ -34,7 +34,12 @@ require("./app/routes/accommodation.routes")(app);
 
 // set port, listen for requests
 
+<<<<<<< HEAD
 const PORT = process.env.PORT || 3022;
+=======
+const PORT = process.env.PORT || 3100;
+
+>>>>>>> 43b6d7b (fixed merge conflicts)
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
