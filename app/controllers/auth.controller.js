@@ -73,6 +73,7 @@ exports.login = async (req, res) => {
           fName: firstName,
           lName: lastName,
           email: email,
+          permission: "student"
         };
       }
     })
