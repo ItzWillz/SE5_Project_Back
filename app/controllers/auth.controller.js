@@ -155,6 +155,7 @@ exports.login = async (req, res) => {
             fName: user.fName,
             lName: user.lName,
             userId: user.id,
+            permission: user.permission,
             token: session.token,
             // refresh_token: user.refresh_token,
             // expiration_date: user.expiration_date
