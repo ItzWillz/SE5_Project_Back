@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const CourseSchedule = sequelize.define("courseSchedule", {
-        schedID: {
+        id: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,

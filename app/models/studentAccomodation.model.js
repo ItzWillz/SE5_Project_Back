@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const StudentAccomodation = sequelize.define("studentAccomodation", {
-        studentAccID: {
+        id: {
             type: Sequelize.INTEGER,
             allowNull: false,
             primaryKey: true,

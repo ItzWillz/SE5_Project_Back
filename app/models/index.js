@@ -164,6 +164,4 @@ db.approval.belongsTo(
   { foreignKey: { allowNull: false }}
 );
 
-
-
 module.exports = db;

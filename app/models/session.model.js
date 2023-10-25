@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const Session = sequelize.define("session", {
-    sessionID: {
+    id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
