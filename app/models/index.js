@@ -26,6 +26,7 @@ db.notification = require("./notification.model.js")(sequelize, Sequelize);
 db.student = require("./student.model.js")(sequelize, Sequelize);
 db.studentAccomodation = require("./studentAccomodation.model.js")(sequelize, Sequelize);
 db.studentSchedule = require("./studentCourseSchedule.model.js")(sequelize, Sequelize);
+db.admin = require("./admin.model.js")(sequelize, Sequelize);
 
 // Foreign key for session
 db.user.hasMany(
@@ -34,6 +35,13 @@ db.user.hasMany(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 db.session.belongsTo(
+  db.user,
+  { as: "user" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
+// Foreign key for admin
+db.admin.belongsTo(
   db.user,
   { as: "user" },
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
