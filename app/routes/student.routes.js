@@ -8,4 +8,3 @@ module.exports = (app) => {
   
     app.use("/accommodations-t2/student", router);
   };
-  
