@@ -28,8 +28,12 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/auth.routes.js")(app);
+<<<<<<< HEAD
 require("./app/routes/accReq.routes")(app);
 require("./app/routes/student.routes")(app);
+=======
+require("./app/routes/accommodation.routes")(app);
+>>>>>>> a664f37 (Implemented acc. controller and routes.)
 
 // set port, listen for requests
 <<<<<<< HEAD

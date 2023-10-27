@@ -2,7 +2,10 @@
   "name": "accommodations-backend",
   "version": "1.0.0",
   "description": "Accommodations Node.js with Rest API",
+<<<<<<< HEAD
   "private": true,
+=======
+>>>>>>> a664f37 (Implemented acc. controller and routes.)
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
