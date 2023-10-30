@@ -4,6 +4,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+      allowNull: false,
     },
     token: {
       type: Sequelize.STRING(3000),
@@ -17,7 +18,11 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATE,
       allowNull: false,
     },
-  });
+  },
+  {
+    freezeTableName: true,
+  }
+  ); 
 
   return Session;
 };

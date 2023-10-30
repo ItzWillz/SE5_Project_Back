@@ -4,6 +4,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
+      allowNull: false,
     },
     fName: {
       type: Sequelize.STRING,
@@ -17,15 +18,16 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    // refresh_token: {
-    //   type: Sequelize.STRING(512),
-    //   allowNull: true
-    // },
-    // expiration_date: {
-    //   type: Sequelize.DATE,
-    //   allowNull: true
-    // },
-  });
+    permission: {
+      type: Sequelize.STRING,  
+      allowNull: true,
+      default: "student",
+    },
+  },
+  {
+    freezeTableName: true,
+  }
+);
 
   return User;
 };
