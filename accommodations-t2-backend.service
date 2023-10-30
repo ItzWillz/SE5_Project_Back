@@ -6,6 +6,7 @@ After=network.target
 Type=simple
 User=ubuntu
 WorkingDirectory=/home/ubuntu/nodeapps/2023/project3/t2/
+WorkingDirectory=/home/ubuntu/nodeapps/2023/project3/t2
 ExecStart=/usr/bin/npm run start
 Restart=on-failure
  

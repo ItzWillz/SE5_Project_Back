@@ -32,6 +32,7 @@ require("./app/routes/accReq.routes")(app);
 require("./app/routes/student.routes")(app);
 
 // set port, listen for requests
+
 const PORT = process.env.PORT || 3022;
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
