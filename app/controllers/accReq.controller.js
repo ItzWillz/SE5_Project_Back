@@ -1,6 +1,7 @@
 const db = require("../models");
 const AccRequest = db.request;
 const Op = db.Sequelize.Op;
+const nodemailer = require('nodemailer');
 
 // Create and Save a new Request
 exports.create = (req, res) => {
@@ -18,14 +19,15 @@ exports.create = (req, res) => {
     semester: req.body.semester,
     type: req.body.type,
     status: req.body.status,
-    studentId: req.body.studentId
+    studentId: req.body.studentId,
+    email: req.body.email
   };
 
   // Save accommodation in the database
   AccRequest.create(accRequest)
     .then((data) => {
+      sendEmail(accRequest.email)
       res.send(data);
-      sendEmail(req.body.email);
     })
     .catch((err) => {
       res.status(500).send({
@@ -138,37 +140,45 @@ exports.deleteAll = (req, res) => {
     });
 };
 
+
 sendEmail = (email) => {
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail', 
+    auth: {
+      user: 'mauriceirakoze77@gmail.com', // replace with desired sender email
+      pass: 'juqd nsox ueka ywag',
+    },
+
+  });
   const mailOptions = {
     from: 'mauriceirakoze77@gmail.com',
     to: email,
     subject: "Initial Accommodations Request Email",
-    text: 
+    html: 
     `
-    Thank you for submitting your request for accommodations. We require supporting documentation to fulfill your request. 
+    <html>
+    <body>
+      <p>Thank you for submitting your request for accommodations. We require supporting documentation to fulfill your request.</p>
 
+      <p>Documentation must be from an appropriate, qualified professional who has seen you within the past 18 months and must contain the following information:</p>
 
-    Documentation must be from an appropriate, qualified professional who has seen you within the past 18 months and must contain the following information:
-    
-    
-    You are a person with a disability.
-    The diagnosis (what is the disability?)
-    Information about the necessary classroom accommodations you will need to successfully complete the semester. There must be a nexus between the disability and the accommodations requested.
-    Name and credentials (license #, etc.) of the diagnostic clinician.
-    
-    
-    Documentation may be emailed to me, but it must be on official letterhead. If your doctor’s office is unwilling to email me (this is the most likely scenario), they may mail the document to you. Then, scan and email it to me. 
-    
-    
-    Once the information is submitted, we will schedule a time to meet to discuss the details (in person or via video conference). After our meeting, I will email your professors your specific ADA academic accommodations letter. Accommodations MUST BE RENEWED EACH SEMESTER.
-    
-    
-    Please let me know if you have any other questions or concerns. I look forward to hearing from you.
-    
-    
-    Sincerely,
-    
-    `,
+      <ul>
+        <li>You are a person with a disability.</li>
+        <li>The diagnosis (what is the disability?)</li>
+        <li>Information about the necessary classroom accommodations you will need to successfully complete the semester. There must be a nexus between the disability and the accommodations requested.</li>
+        <li>Name and credentials (license #, etc.) of the diagnostic clinician.</li>
+      </ul>
+
+      <p>Documentation may be emailed to me, but it must be on official letterhead. If your doctor’s office is unwilling to email me (this is the most likely scenario), they may mail the document to you. Then, scan and email it to me.</p>
+
+      <p>Once the information is submitted, we will schedule a time to meet to discuss the details (in person or via video conference). After our meeting, I will email your professors your specific ADA academic accommodations letter. Accommodations MUST BE RENEWED EACH SEMESTER.</p>
+
+      <p>Please let me know if you have any other questions or concerns. I look forward to hearing from you.</p>
+
+      <p>Sincerely,</p>
+    </body>
+    </html>
+    ` 
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
