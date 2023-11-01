@@ -73,6 +73,18 @@ exports.findOne = (req, res) => {
     });
 };
 
+// Retrieve all requests for a specific student in the database.
+exports.findAllForUser = async (req, res) => {
+  const studentId = req.params.id;
+  console.log(studentId)
+
+  const [results, metadata] = await db.sequelize.query(
+    `SELECT * FROM request
+    WHERE studentId = ${studentId}`
+  );
+  res.send(results)
+};
+
 // Update an accommodation request by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
