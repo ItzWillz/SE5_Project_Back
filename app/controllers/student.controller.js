@@ -7,7 +7,7 @@ exports.findOne = (req, res) => {
     const userSentId = req.params.userId;
   
     Student.findOne(
-        { where: {userId: "1"}})
+        { where: {userId: userSentId}})
       .then((data) => {
         if (data) {
           res.send(data);
