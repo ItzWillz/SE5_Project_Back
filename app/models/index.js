@@ -54,6 +54,13 @@ db.student.belongsTo(
   { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
 );
 
+// Foreign key for faculty
+db.faculty.belongsTo(
+  db.user,
+  { as: "user" },
+  { foreignKey: { allowNull: false }, onDelete: "CASCADE" }
+);
+
 // Foreign key for StudentCourseSchedule
 db.student.hasMany(
   db.studentSchedule,
