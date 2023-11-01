@@ -10,7 +10,10 @@ module.exports = (app) => {
   router.get("/", [authenticate], accReq.findAll);
 
   // Retrieve a single Accommodation with id
-  router.get("/:id", [authenticate], accReq.findOne);
+  //router.get("/:id", [authenticate], accReq.findOne);
+
+  // Retrieve all Accommodations with a StudentId
+  router.get("/:id", [authenticate], accReq.findAllForUser);
 
   // Update an Accommodation with id
   router.put("/:id", [authenticate], accReq.update);

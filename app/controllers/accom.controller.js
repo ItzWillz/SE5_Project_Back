@@ -1,34 +1,33 @@
 const db = require("../models");
-const AccRequest = db.request;
+const Accom = db.accommodation;
 const Op = db.Sequelize.Op;
 
-// Create and Save a new Request
+// Create and Save a new Accommodation
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.type) {
     res.status(400).send({
-      message: "Accommodation request must have a type!",
+      message: "Accommodation must be approved or declined!",
     });
     return;
   }
 
-  // Create a accommodation request
-  const accRequest = {
-    body: req.body.body,
+  // Create a accommodation
+  const accom = {
+    title: req.body.title,
     semester: req.body.semester,
     type: req.body.type,
-    status: req.body.status,
-    studentId: req.body.studentId
+    addDoc: req.body.addDoc,
   };
 
   // Save accommodation in the database
-  AccRequest.create(accRequest)
+  Accom.create(accom)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the accommodation request.",
+        message: err.message || "Some error occurred while creating the accommodation.",
       });
     });
 };
@@ -38,13 +37,13 @@ exports.findAll = (req, res) => {
   const id = req.query.id;
   var condition = id ? { id: { [Op.like]: `%${id}%` } } : null;
 
-  AccRequest.findAll({ where: condition })
+  Accom.findAll({ where: condition })
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occurred while retrieving accommodation requests.",
+        message: err.message || "Some error occurred while retrieving accommodations.",
       });
     });
 };
@@ -53,19 +52,19 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  AccRequest.findByPk(id)
+  Accom.findByPk(id)
     .then((data) => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find accommodation request with id=${id}.`,
+          message: `Cannot find accommodation with id=${id}.`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error retrieving accommodation request with id=" + id,
+        message: "Error retrieving accommodation with id=" + id,
       });
     });
 };
@@ -76,75 +75,76 @@ exports.findAllForUser = async (req, res) => {
   console.log(studentId)
 
   const [results, metadata] = await db.sequelize.query(
-    `SELECT * FROM request
-    WHERE studentId = ${studentId}`
+    `SELECT r.* FROM studentAccommodation r
+    WHERE r.studentId = ${studentId}`
   );
   res.send(results)
 };
 
-// Update an accommodation request by the id in the request
+
+// Update an accommodation by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  AccRequest.update(req.body, {
+  Accom.update(req.body, {
     where: { accID: id },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "accommodation request was updated successfully.",
+          message: "accommodation was updated successfully.",
         });
       } else {
         res.send({
-          message: `Cannot update accommodation request with id=${id}. Maybe accommodation request was not found or req.body is empty!`,
+          message: `Cannot update accommodation with id=${id}. Maybe accommodation was not found or req.body is empty!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating accommodation request with id=" + id,
+        message: "Error updating accommodation with id=" + id,
       });
     });
 };
 
-// Delete a accommodation request with the specified id in the request
+// Delete a accommodation with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  AccRequest.destroy({
+  Accom.destroy({
     where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: "accommodation request was deleted successfully!",
+          message: "accommodation was deleted successfully!",
         });
       } else {
         res.send({
-          message: `Cannot delete accommodation request with id=${id}. Maybe accommodation request was not found!`,
+          message: `Cannot delete accommodation with id=${id}. Maybe accommodation was not found!`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Could not delete accommodation request with id=" + id,
+        message: "Could not delete accommodation with id=" + id,
       });
     });
 };
 
 // Delete all accommodation requests from the database.
 exports.deleteAll = (req, res) => {
-  AccRequest.destroy({
+  Accom.destroy({
     where: {},
     truncate: false,
   })
     .then((nums) => {
-      res.send({ message: `${nums} accommodation requests were deleted successfully!` });
+      res.send({ message: `${nums} accommodations were deleted successfully!` });
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all accommodation requests.",
+          err.message || "Some error occurred while removing all accommodations.",
       });
     });
 };
