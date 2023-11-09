@@ -1,8 +1,9 @@
 module.exports = {
     HOST: 'localhost',
     USER: 'root',
-    PASSWORD: 'Database2022',
-    DB: 'se4p3',
+    PASSWORD: '123456778',
+    DB: 'todo',
+    port:3306,
     dialect: 'mysql',   // 'mysql' for local database, 'mariadb' for AWS database
     dialectOptions: {
         
