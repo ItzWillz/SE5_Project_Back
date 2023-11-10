@@ -55,7 +55,7 @@ exports.findAll = (req, res) => {
 // Find a single accommodation with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-
+  
   AccRequest.findByPk(id)
     .then((data) => {
       if (data) {
@@ -75,12 +75,12 @@ exports.findOne = (req, res) => {
 
 // Retrieve all requests for a specific student in the database.
 exports.findAllForUser = async (req, res) => {
-  const studentId = req.params.id;
-  console.log(studentId)
+  const id = req.params.id;
+  console.log(id)
 
   const [results, metadata] = await db.sequelize.query(
     `SELECT * FROM request
-    WHERE studentId = ${studentId}`
+    WHERE Id = ${id}`
   );
   res.send(results)
 };
@@ -90,7 +90,7 @@ exports.update = (req, res) => {
   const id = req.params.id;
 
   AccRequest.update(req.body, {
-    where: { accID: id },
+    where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
