@@ -23,3 +23,24 @@ exports.findOne = (req, res) => {
         });
       });
   };
+
+  exports.findstudentWithStudentId = (req, res) => {
+    const sentId = req.params.stuId;
+  
+    Student.findOne(
+        { where: {id: sentId}})
+      .then((data) => {
+        if (data) {
+          res.send(data);
+        } else {
+          res.status(404).send({
+            message: `Cannot find Student with studentId=${userSentId}.`,
+          });
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: "Error retrieving Student with syuentId=" + userSentId,
+        });
+      });
+  };
