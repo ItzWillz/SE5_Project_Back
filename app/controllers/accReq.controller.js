@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require("../models"); 
 const AccRequest = db.request;
 const Op = db.Sequelize.Op;
 const nodemailer = require('nodemailer');
