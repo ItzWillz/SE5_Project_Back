@@ -6,10 +6,6 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
             autoIncrement: true,
         },
-        date: {
-            type: Sequelize.DATE,
-            allowNull: false,
-        },
     },
     {
         freezeTableName: true,
