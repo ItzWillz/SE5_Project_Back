@@ -5,19 +5,18 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Accommodation
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.type) {
+  if (!req.body.accommodationId) {
     res.status(400).send({
-      message: "Accommodation must be approved or declined!",
+      message: "Student accommodation must be assigned an accommodation!",
     });
     return;
   }
 
   // Create a accommodation
   const accom = {
-    title: req.body.title,
     semester: req.body.semester,
-    type: req.body.type,
-    addDoc: req.body.addDoc,
+    studentId: req.body.studentId,
+    accommodationId: req.body.accommodationId,
   };
 
   // Save accommodation in the database
