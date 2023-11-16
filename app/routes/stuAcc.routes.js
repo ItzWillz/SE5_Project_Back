@@ -10,7 +10,7 @@ module.exports = (app) => {
   router.get("/", [authenticate], stucom.findAll);
 
   // Retrieve a single Accommodation with id
-  //router.get("/:id", [authenticate], stucom.findOne);
+  router.get("/:id/:stuid", [authenticate], stucom.findOne); //FIGURE THIS OUT!! 
 
   // Retrieve all Student Accommodations with a Student Id
   router.get("/:id", [authenticate], stucom.findAllForUser);
