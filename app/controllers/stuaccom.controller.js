@@ -71,7 +71,6 @@ exports.findOne = (req, res) => {
 // Retrieve all requests for a specific student in the database.
 exports.findAllForUser = async (req, res) => {
   const studentId = req.params.id;
-  console.log(studentId + "hi")
 
   const [results, metadata] = await db.sequelize.query(
     `SELECT r.* FROM studentAccommodation r
@@ -80,6 +79,16 @@ exports.findAllForUser = async (req, res) => {
   res.send(results)
 };
 
+// Retrieve all accommodations that are of type Academic
+exports.findAcademic = async (req, res) => {
+  const studentId = req.params.id;
+
+  const [results, metadata] = await db.sequelize.query(
+    `SELECT r.* FROM studentAccommodation r JOIN accommodation a ON r.accommodationId=a.id
+    WHERE r.studentId = ${studentId} AND a.type="academic"`
+  );
+  res.send(results)
+};
 
 // Update an accommodation by the id in the request
 exports.update = (req, res) => {

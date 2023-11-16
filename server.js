@@ -28,7 +28,6 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/auth.routes.js")(app);
-require("./app/routes/request.routes")(app);
 require("./app/routes/stuAcc.routes")(app);
 require("./app/routes/student.routes")(app);
 require("./app/routes/accomm.routes")(app);
