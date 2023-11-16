@@ -15,7 +15,7 @@ exports.create = (req, res) => {
   // Create a accommodation
   const accom = {
     title: req.body.title,
-    semester: req.body.semester,
+    description: req.body.description,
     type: req.body.type,
     addDoc: req.body.addDoc,
   };
@@ -87,7 +87,7 @@ exports.update = (req, res) => {
   const id = req.params.id;
 
   Accom.update(req.body, {
-    where: { accID: id },
+    where: { id: id },
   })
     .then((num) => {
       if (num == 1) {

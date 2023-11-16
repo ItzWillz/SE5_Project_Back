@@ -50,7 +50,7 @@ exports.findAll = (req, res) => {
 
 // Find a single accommodation with an id
 exports.findOne = (req, res) => {
-  const id = req.params.id;
+  const id = req.params.stuid;
 
   StuAccom.findByPk(id)
     .then((data) => {
@@ -72,7 +72,7 @@ exports.findOne = (req, res) => {
 // Retrieve all requests for a specific student in the database.
 exports.findAllForUser = async (req, res) => {
   const studentId = req.params.id;
-  console.log(studentId)
+  console.log(studentId + "hi")
 
   const [results, metadata] = await db.sequelize.query(
     `SELECT r.* FROM studentAccommodation r

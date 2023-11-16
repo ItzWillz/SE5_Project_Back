@@ -12,10 +12,10 @@ module.exports = (sequelize, Sequelize) => {
       },
       description: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       type: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       addDoc: {
