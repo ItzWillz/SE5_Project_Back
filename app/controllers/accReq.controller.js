@@ -53,34 +53,25 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single accommodation with an id
-exports.findOne = (req, res) => {
+exports.findOne = async (req, res) => {
   const id = req.params.id;
+  console.log(id + " please end me")
   
-  AccRequest.findByPk(id)
-    .then((data) => {
-      if (data) {
-        res.send(data);
-      } else {
-        res.status(404).send({
-          message: `Cannot find accommodation request with id=${id}.`,
-        });
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Error retrieving accommodation request with id=" + id,
-      });
-    });
+  const [results, metadata] = await db.sequelize.query(
+    `SELECT * FROM request
+    WHERE id = ${id}`
+  );
+  res.send(results)
 };
 
 // Retrieve all requests for a specific student in the database.
 exports.findAllForUser = async (req, res) => {
   const id = req.params.id;
-  console.log(id)
+  console.log(id + " why is it going to this one")
 
   const [results, metadata] = await db.sequelize.query(
     `SELECT * FROM request
-    WHERE Id = ${id}`
+    WHERE studentId = ${id}`
   );
   res.send(results)
 };
