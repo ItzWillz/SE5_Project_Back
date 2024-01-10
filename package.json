@@ -1,12 +1,12 @@
 {
-  "name": "accommodations-backend",
+  "name": "asset-backend",
   "version": "1.0.0",
-  "description": "Accommodations Node.js with Rest API",
+  "description": "Asset Node.js with Rest API",
   "private": true,
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "bundle": "mkdir deploy && cp -r app server.js package.json package-lock.json accommodations-t2-backend.service deploy && rm deploy/app/config/db.config.js && mv deploy/app/config/prod.db.config.js deploy/app/config/db.config.js"
+    "bundle": "mkdir deploy && cp -r app server.js package.json package-lock.json asset-t2-backend.service deploy && rm deploy/app/config/db.config.js && mv deploy/app/config/prod.db.config.js deploy/app/config/db.config.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
