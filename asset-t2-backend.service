@@ -1,5 +1,5 @@
 [Unit]
-Description=Accommodations App
+Description=Asset App
 After=network.target
  
 [Service]
